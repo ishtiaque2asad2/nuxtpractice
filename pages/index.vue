@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      loadedPosts: []
+
     };
   },
   fetch(context){
@@ -43,9 +43,14 @@ export default {
 
       }, 1500)
     }).then(data=>{
-      context.store.comment({})
+      context.store.commit('setPosts',data.loadedPosts);
     });
 
+  },
+  computed:{
+    loadedPosts(){
+      return this.$store.getters.loadedPosts
+    }
   }
 };
 </script>
